@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Sales_item.h"
-
+// compile and  use "./a.out <book.txt>log"
 using namespace std;
 int main() {
     Sales_item cur,val;
@@ -10,7 +10,7 @@ int main() {
 		cur += val;
 		cout << "Cur is now: " << cur << endl;
 	    } else {
-		cout << cur << endl;
+		cout <<"Cur was: "<< cur << endl;
 		cur = val;  
 	    }
 	}
