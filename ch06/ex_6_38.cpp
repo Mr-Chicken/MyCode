@@ -1,0 +1,1 @@
+int (&arrPtr(int i))[10]
