@@ -17,7 +17,7 @@ public:
     Sales_data(string isbn, unsigned sold, double rev): bookNo(isbn), units_sold(sold), revenue(rev){}
     Sales_data(string isbn): Sales_data(isbn, 0, 0.0){}
     Sales_data(istream &is) {is >> bookNo >> units_sold >> revenue;}
-
+    void writeDown(ostream &os);
     Sales_data& combine(const Sales_data&);
     const string& isbn() {return bookNo;}
     double avg_price() const;

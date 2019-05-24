@@ -31,3 +31,7 @@ Sales_data add(const Sales_data &sa, const Sales_data &sd) {
     sum.combine(sd);
     return sum;
 }
+
+void Sales_data::writeDown(ostream &os) {
+    os << bookNo << " " << units_sold << " " << revenue << endl;
+}
