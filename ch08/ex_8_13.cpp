@@ -14,25 +14,24 @@ struct PersonInfo {
     std::vector<string> phones;
 };
 
-int main() {
+int main(int argc, char *argv[]) {
     string line, word;
     std::vector<PersonInfo> people;
-    istringstream iss;
-    while (std::getline(std::cin, line)) {
+    ifstream is(argv[1]);
+    while (std::getline(is, line)) {
         PersonInfo info;
-        iss.clear();    // 上一次读到eof，先重置状态。
-        iss.str(line);
+        istringstream iss(line);
         iss >> info.name;
         while (iss >> word)
             info.phones.push_back(word);
         people.push_back(info);
     }
-
     for (const auto &s : people) {
         cout << s.name << " ";
         for (const auto &p : s.phones)
-            cout << p << " ";
+            cout << p;
         cout << endl;
     }
+    is.close();
     return 0;
 }
