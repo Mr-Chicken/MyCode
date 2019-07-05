@@ -15,6 +15,6 @@ int main()
 	for (int x = 0; x<100;++x) {
 		vec.push_back(x);
 		showStauts(vec);
-	} // 翻倍增加capacity的值
+	} // 翻倍增加capacity的值 
 	return 0;
 }
