@@ -5,7 +5,7 @@ using std::shared_ptr;
 
 struct destination {};
 struct connection {};
-connection connect(destination *dest) {}
+connection connect(destination *dest) { return connection();}
 void disconnect(connection *con) {}
 void end_connection(connection *p) {
 	disconnect(p);
