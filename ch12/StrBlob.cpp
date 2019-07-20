@@ -1,5 +1,5 @@
 #include "StrBlob.h"
-
+#include "StrBlobPtr.h"
 void StrBlob::check(size_type i, const string &msg) const {
 	if (i >= data->size())
 		throw std::out_of_range(msg);
@@ -27,4 +27,12 @@ const string& StrBlob::front() const {
 const string& StrBlob::back() const {
 	check(0, "back on empty StrBlob");
 	return data->back();
+}
+
+StrBlobPtr StrBlob::begin() {
+	return StrBlobPtr(*this);
+}
+StrBlobPtr	StrBlob::end() {
+	auto ret = StrBlobPtr(*this, data->size());
+	return ret;
 }
