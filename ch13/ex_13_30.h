@@ -14,11 +14,8 @@ public:
 		i = hp.i;
 		ps = new string(*hp.ps);
 	}
-	HasPtr& operator=(const HasPtr &hp) {
-		auto newp = new string(*hp.ps);
-		i = hp.i;
-		delete ps;
-		ps = newp;
+	HasPtr& operator=(HasPtr hp) {
+		swap(*this, hp);
 		return *this;
 	}
 private:
