@@ -8,6 +8,7 @@ using std::string;
 class Folder;
 class Message {
 	friend class Folder;
+	friend void swap(Message &lhs, Message &rhs);
 public:
 	explicit Message(const string &str = string()):contents(str) {}
 	Message(const Message&);
