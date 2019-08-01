@@ -33,7 +33,7 @@ inline double avg_price() const {
 }
 
 ostream& operator<<(ostream &os, const Sales_data &s) {
-	os << s.bookNo << " " << s.units_sold << " " << s.avg_price();
+	os << s.bookNo << " " << s.units_sold << " " << s.revenue << "" << s.avg_price();
 	return os;
 }
 istream& operator>>(istream &is, Sales_data &s) {
