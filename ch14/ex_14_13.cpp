@@ -8,13 +8,15 @@ using std::istream;
 class Sales_data {
 	friend ostream& operator<<(ostream &os, const Sales_data &s);
 	friend istream& operator>>(istream &is, Sales_data &s);
-	friend Sales_data Sales_data::operator+(const Sales_data &lhs, const Sales_data &rhs)
+	friend Sales_data operator+(const Sales_data &lhs, const Sales_data &rhs);
+	friend Sales_data operator-(const Sales_data &lhs, const Sales_data &rhs);
 public:
 	Sales_data() = default;
 	Sales_data(const string &isbn, unsigned sold, double rev): bookNo(isbn), units_sold(sold), revenue(rev) {}
 	Sales_data(const string &isbn): Sales_data(isbn, 0, 0.0);
 	string isbn() const {return bookNo;}
 	Sales_data& operator+=(const Sales_data &rhs);
+	Sales_data& operator-=(const Sales_data &rhs);
 
 private:
 	inline double avg_price() const;
@@ -25,6 +27,11 @@ private:
 Sales_data& Sales_data::operator+=(const Sales_data &rhs) {
 	units_sold += rhs.units_sold;
 	revenue += rhs.revenue;
+	return *this;
+}
+Sales_data& Sales_data::operator-=(const Sales_data &rhs) {
+	units_sold -= rhs.units_sold;
+	revenue -= rhs.revenue;
 	return *this;
 }
 
@@ -45,8 +52,13 @@ istream& operator>>(istream &is, Sales_data &s) {
 		s = Sales_data();
 	return is;
 }
-Sales_data Sales_data::operator+=(const Sales_data &lhs, const Sales_data &rhs) {
+Sales_data operator+(const Sales_data &lhs, const Sales_data &rhs) {
 	Sales_data ret = lhs;
 	ret += rhs
+	return ret;
+}
+Sales_data operator-(const Sales_data &lhs, const Sales_data &rhs) {
+	Sales_data ret = lhs;
+	ret -= rhs;
 	return ret;
 }
