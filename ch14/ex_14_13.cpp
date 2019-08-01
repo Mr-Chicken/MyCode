@@ -13,7 +13,7 @@ class Sales_data {
 public:
 	Sales_data() = default;
 	Sales_data(const string &isbn, unsigned sold, double rev): bookNo(isbn), units_sold(sold), revenue(rev) {}
-	Sales_data(const string &isbn): Sales_data(isbn, 0, 0.0);
+	Sales_data(const string &isbn): Sales_data(isbn, 0, 0.0){};
 	string isbn() const {return bookNo;}
 	Sales_data& operator+=(const Sales_data &rhs);
 	Sales_data& operator-=(const Sales_data &rhs);
@@ -35,7 +35,7 @@ Sales_data& Sales_data::operator-=(const Sales_data &rhs) {
 	return *this;
 }
 
-inline double avg_price() const {
+inline double Sales_data::avg_price() const {
 	return units_sold ? revenue/units_sold : 0.0;
 }
 
@@ -54,7 +54,7 @@ istream& operator>>(istream &is, Sales_data &s) {
 }
 Sales_data operator+(const Sales_data &lhs, const Sales_data &rhs) {
 	Sales_data ret = lhs;
-	ret += rhs
+	ret += rhs;
 	return ret;
 }
 Sales_data operator-(const Sales_data &lhs, const Sales_data &rhs) {
