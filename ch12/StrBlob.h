@@ -12,12 +12,10 @@ using std::string;
 using std::shared_ptr;
 using std::make_shared;
 
-/** 
-	不要单独编译，过不了。
-*/
 class StrBlobPtr;
 class StrBlob {
 	friend class StrBlobPtr;
+	
 public:
 	using size_type = vector<string>::size_type;
 	StrBlob() : data(make_shared<vector<string>>()) {}
@@ -38,4 +36,40 @@ private:
 	void check(size_type i, const string &msg) const;
 };
 
+void StrBlob::check(size_type i, const string &msg) const {
+	if (i >= data->size())
+		throw std::out_of_range(msg);
+}
+void StrBlob::pop_back() {
+	check(0, "pop_back on empty StrBlob");
+	data->pop_back();
+}
+
+string& StrBlob::front() {
+	check(0, "front on empty StrBlob");
+	return data->front();
+}
+string& StrBlob::back() {
+	check(0, "back on empty StrBlob");
+	return data->back();
+}
+
+const string& StrBlob::front() const {
+	check(0, "front on empty StrBlob");
+	return data->front();
+}
+
+
+const string& StrBlob::back() const {
+	check(0, "back on empty StrBlob");
+	return data->back();
+}
+
+StrBlobPtr StrBlob::begin() {
+	return StrBlobPtr(*this);
+}
+StrBlobPtr	StrBlob::end() {
+	auto ret = StrBlobPtr(*this, data->size());
+	return ret;
+}
 #endif

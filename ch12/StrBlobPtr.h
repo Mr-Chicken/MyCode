@@ -10,9 +10,7 @@ using std::shared_ptr;
 using std::vector;
 class StrBlob;
 
-/** 
-	不要单独编译，过不了。
-*/
+
 class StrBlobPtr {
 public:
 	StrBlobPtr(): curr(0) {}
