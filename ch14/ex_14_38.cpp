@@ -10,7 +10,7 @@ using std::string;
 class SizeComp {
 public:
 	SizeComp(size_t size): sz(size) {}
-	bool operator()(const string &s) {
+	bool operator()(const string &s) const {
 		return s.size() == sz;
 	}
 private:
