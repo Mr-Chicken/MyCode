@@ -2,7 +2,8 @@
 #define EX_15_3_H
 #include <iostream>
 using std::string;
-
+using std::cout;
+using std::endl;
 class Quote {
 public:
 	Quote() = default;
