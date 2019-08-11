@@ -10,6 +10,10 @@ public:
 	Quote(const string &book, double sales_price):
 		bookNo(book), price(sales_price) {}
 	string isbn() const {return bookNo;}
+	Quote(const Quote &q) = default;
+	Quote(Quote &&q) noexcept = default;
+	Quote& operator=(const Quote &q) = default;
+	Quote& operator=(Quote &&q) noexcept = default;
 	virtual double net_price(std::size_t n) const 
 		{return n * price;}
 	virtual ~Quote() = default;
