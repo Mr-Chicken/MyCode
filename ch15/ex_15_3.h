@@ -14,6 +14,8 @@ public:
 	Quote(Quote &&q) noexcept = default;
 	Quote& operator=(const Quote &q) = default;
 	Quote& operator=(Quote &&q) noexcept = default;
+	virtual Quote* clone() const & {return new Quote(*this);}
+	virtual Quote* clone() && {return new Quote(std::move(*this));}
 	virtual double net_price(std::size_t n) const 
 		{return n * price;}
 	virtual ~Quote() = default;

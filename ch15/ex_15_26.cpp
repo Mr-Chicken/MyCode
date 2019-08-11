@@ -105,9 +105,6 @@ private:
 int main()
 {
 	Bulk_quote b;
-	Quote &q = b;
-	if (!(q != b))
-		cout << "q != b" << endl;
 
 	return 0;
 }
