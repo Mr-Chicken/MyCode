@@ -52,7 +52,7 @@ class AndQuery : public BinaryQuery {
 		BinaryQuery(left, right, "&") {
 			cout << "AndQuery(const Query &left, const Query &right)" << endl;
 	}
-	QueryResult eval(const TextQuery &t) const {};
+	QueryResult eval(const TextQuery &t) const {}
 };
 
 inline Query operator&(const Query &lhs, const Query &rhs) {
@@ -65,7 +65,7 @@ class OrQuery : public BinaryQuery {
 		BinaryQuery(left, right, "|") {
 			cout << "OrQuery(const Query &left, const Query &right)" << endl;
 	}
-	QueryResult eval(const TextQuery &t) const {};
+	QueryResult eval(const TextQuery &t) const {}
 };
 inline Query operator|(const Query &lhs, const Query &rhs) {
 	return shared_ptr<Query_base>(new OrQuery(lhs, rhs));
