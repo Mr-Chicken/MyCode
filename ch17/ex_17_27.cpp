@@ -15,12 +15,13 @@ int main()
 {
 	string phone = "(\\d{5})([-])?(\\d{4})?\\b";
 	regex r(phone);
+	string fmt = "$1-$3";
 	smatch m;
 	string s;
 	while (std::getline(std::cin, s)) {
 		for (std::sregex_iterator it(s.begin(), s.end(), r), end_it; it != end_it; ++it) {
 			if (valid(*it))
-				cout << "valid: " << it->str() << endl;
+				cout << "valid: " << it->format(fmt) << endl;
 			else
 				cout << "not valid: " << it->str() << endl;
 		}
